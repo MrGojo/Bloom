@@ -20,6 +20,8 @@ export default function Login() {
       if (response.success) {
         saveToLocal('isLoggedIn', true);
         saveToLocal('userId', response.user_id);
+        saveToLocal('userType', response.user_type);
+        saveToLocal('userName', response.user_name);
         toast.success(response.message);
         navigate('/dashboard');
       }
