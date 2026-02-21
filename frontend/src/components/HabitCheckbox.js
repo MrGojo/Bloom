@@ -9,14 +9,14 @@ export const HabitCheckbox = ({ label, checked, onChange, icon: Icon }) => {
       whileTap={{ scale: 0.98 }}
       className="flex items-center gap-4 p-4 bg-white rounded-2xl border-2 border-pcos-border hover:border-pcos-primary/50 cursor-pointer transition-all"
     >
-      <div className="relative">
+      <div className="relative flex-shrink-0">
         <input
           type="checkbox"
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
-          className="sr-only"
+          className="absolute inset-0 w-6 h-6 opacity-0 cursor-pointer z-10"
         />
-        <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all ${
+        <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all pointer-events-none ${
           checked 
             ? 'bg-gradient-to-br from-pcos-primary to-pcos-secondary border-pcos-primary' 
             : 'border-pcos-border bg-white'
