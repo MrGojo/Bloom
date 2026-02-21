@@ -345,7 +345,7 @@ async def get_monthly_reports():
     return reports
 
 @api_router.post("/monthly-report/generate")
-async def generate_monthly_report(month: str, year: int):
+async def generate_monthly_report(month: int, year: int):
     """Generate monthly report from daily logs"""
     # Get all logs for the month
     start_date = f"{year}-{month:02d}-01"
