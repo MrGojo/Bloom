@@ -102,8 +102,11 @@ export default function Login() {
           </form>
           
           <div className="mt-6 text-center">
+            <p className="text-sm text-pcos-text-muted font-body mb-2">
+              For Grishu: <span className="font-medium text-pcos-text">grishmasingh</span>
+            </p>
             <p className="text-sm text-pcos-text-muted font-body">
-              Hint: Password is <span className="font-medium text-pcos-text">grishu2025</span>
+              For Admin: <span className="font-medium text-pcos-text">shuubhamnarrkar</span>
             </p>
           </div>
         </motion.div>
