@@ -139,7 +139,7 @@ export default function DailyHabits() {
           {/* Movement Section */}
           <div className="space-y-3">
             <h2 className="text-lg font-heading font-bold text-pcos-text flex items-center gap-2">
-              <Walk className="w-5 h-5 text-pcos-primary" />
+              <Footprints className="w-5 h-5 text-pcos-primary" />
               Movement
             </h2>
             <div className="space-y-2">
@@ -147,7 +147,7 @@ export default function DailyHabits() {
                 label="20-30 min walk"
                 checked={habits.movement_walk}
                 onChange={(val) => handleHabitChange('movement_walk', val)}
-                icon={Walk}
+                icon={Footprints}
               />
               <HabitCheckbox
                 label="5-10 min yoga"
