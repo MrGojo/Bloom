@@ -1,31 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, RefreshCw, Clock, ChefHat } from 'lucide-react';
+import { ArrowLeft, Clock, ChefHat, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { BottomNav } from '../components/BottomNav';
-import { getRandomCraving } from '../utils/api';
+import { getCravings } from '../utils/api';
 import { toast } from 'sonner';
 
 export default function CravingEmergency() {
   const navigate = useNavigate();
-  const [craving, setCraving] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [allCravings, setAllCravings] = useState([]);
+  const [selectedCraving, setSelectedCraving] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
   
-  const handleGetAlternative = async () => {
-    setLoading(true);
+  useEffect(() => {
+    fetchCravings();
+  }, []);
+  
+  const fetchCravings = async () => {
     try {
-      const data = await getRandomCraving();
-      setCraving(data);
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 2000);
-      toast.success('Found a healthy swap! 🌿');
+      const data = await getCravings();
+      setAllCravings(data || []);
     } catch (error) {
-      toast.error('Failed to get alternative');
+      console.error('Error fetching cravings:', error);
+      toast.error('Failed to load cravings');
     } finally {
       setLoading(false);
     }
   };
+  
+  const handleSelectCraving = (craving) => {
+    setSelectedCraving(craving);
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 2000);
+    toast.success('Found a healthy swap! 🌿');
+  };
+  
+  const filteredCravings = allCravings.filter(c => 
+    c.junk_food.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-pcos-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-pcos-primary border-t-transparent"></div>
+      </div>
+    );
+  }
   
   return (
     <div data-testid="craving-emergency-page" className="min-h-screen bg-pcos-background pb-24">
