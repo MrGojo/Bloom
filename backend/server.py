@@ -249,7 +249,9 @@ async def get_period_prediction():
     
     # Check if period is missed (>45 days)
     last_date = datetime.fromisoformat(last_period)
-    days_since = (datetime.now(timezone.utc) - last_date).days
+    # Make both datetimes naive for comparison
+    now_naive = datetime.now()
+    days_since = (now_naive - last_date).days
     is_missed = days_since > 45
     
     return {
