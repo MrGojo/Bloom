@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Save } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Walk, Sunrise, Leaf, Egg, Salad, Droplets, Ban, Moon, Coffee, Heart } from 'lucide-react';
+import { Footprints, Sunrise, Leaf, Egg, Salad, Droplets, Ban, Moon, Coffee, Heart } from 'lucide-react';
 import { BottomNav } from '../components/BottomNav';
 import { HabitCheckbox } from '../components/HabitCheckbox';
 import { getDailyLog, updateDailyLog } from '../utils/api';
