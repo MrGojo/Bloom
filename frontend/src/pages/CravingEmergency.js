@@ -92,38 +92,57 @@ export default function CravingEmergency() {
             
             <div className="text-6xl mb-2">🍫➡️🥗</div>
             <h2 className="text-2xl font-heading font-bold text-pcos-text">
-              Having a craving?
+              What are you craving?
             </h2>
-            <p className="text-pcos-text-muted font-body">
-              No judgment! Let's find you a healthier alternative that still hits the spot 💕
+            <p className="text-pcos-text-muted font-body leading-relaxed">
+              No judgment! Tell me what you're craving and I'll find you a healthier alternative that still hits the spot 💕
             </p>
           </motion.div>
           
-          {/* Emergency Button */}
-          <motion.button
-            data-testid="get-alternative-button"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={handleGetAlternative}
-            disabled={loading}
-            className="w-full py-6 rounded-pcos bg-gradient-to-r from-pcos-primary to-pcos-secondary text-white font-heading font-bold text-xl shadow-pcos-button hover:opacity-90 transition-opacity disabled:opacity-50 relative overflow-hidden"
-          >
-            {loading ? (
-              <div className="flex items-center justify-center gap-3">
-                <RefreshCw className="w-6 h-6 animate-spin" />
-                <span>Finding alternatives...</span>
-              </div>
-            ) : (
-              <div className="flex items-center justify-center gap-3">
-                <span className="text-3xl">🍫</span>
-                <span>Get Healthy Swap</span>
-              </div>
-            )}
-          </motion.button>
+          {/* Search Bar */}
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-pcos-text-muted" />
+            <input
+              data-testid="search-cravings-input"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for your craving..."
+              className="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-pcos-border bg-white focus:border-pcos-primary outline-none font-body text-pcos-text"
+            />
+          </div>
           
-          {/* Alternative Card */}
-          <AnimatePresence mode="wait">
-            {craving && (
+          {/* Cravings Grid */}
+          {!selectedCraving ? (
+            <div className="space-y-3">
+              <h3 className="text-lg font-heading font-bold text-pcos-text px-2">Select your craving:</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {filteredCravings.map((craving) => (
+                  <motion.button
+                    key={craving.craving_id}
+                    data-testid={`craving-option-${craving.junk_food.toLowerCase().replace(/\s+/g, '-')}`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleSelectCraving(craving)}
+                    className="bg-white rounded-2xl p-5 shadow-pcos-card hover:shadow-lg transition-all text-left border-2 border-pcos-border hover:border-pcos-primary"
+                  >
+                    <div className="text-3xl mb-2">🍽️</div>
+                    <h4 className="font-heading font-bold text-pcos-text mb-1">{craving.junk_food}</h4>
+                    <p className="text-xs text-pcos-text-muted font-body">Tap for alternative</p>
+                  </motion.button>
+                ))}
+              </div>
+              
+              {filteredCravings.length === 0 && (
+                <div className="text-center py-8">
+                  <div className="text-6xl mb-4">🔍</div>
+                  <p className="text-pcos-text-muted font-body">
+                    No cravings found. Try a different search!
+                  </p>
+                </div>
+              )}
+            </div>
+          ) : (
               <motion.div
                 key={craving.craving_id}
                 initial={{ opacity: 0, scale: 0.9 }}
