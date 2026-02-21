@@ -171,12 +171,22 @@ async def root():
 
 @api_router.post("/auth/login", response_model=LoginResponse)
 async def login(request: LoginRequest):
-    """Simple hardcoded login"""
-    if request.password == "grishu2025":
+    """Simple hardcoded login for Grishu and Admin"""
+    if request.password == "grishmasingh":
         return LoginResponse(
             success=True,
             message="Welcome back, Grishu! 💕",
-            user_id="grishu_user_001"
+            user_id="grishu_user_001",
+            user_type="user",
+            user_name="Grishu"
+        )
+    elif request.password == "shuubhamnarrkar":
+        return LoginResponse(
+            success=True,
+            message="Welcome, Shubham! 💜",
+            user_id="admin_user_001",
+            user_type="admin",
+            user_name="Shubham"
         )
     raise HTTPException(status_code=401, detail="Invalid password")
 
