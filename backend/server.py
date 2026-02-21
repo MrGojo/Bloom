@@ -41,6 +41,8 @@ class LoginResponse(BaseModel):
     success: bool
     message: str
     user_id: str
+    user_type: str
+    user_name: str
 
 class DailyLog(BaseModel):
     model_config = ConfigDict(extra="ignore")
