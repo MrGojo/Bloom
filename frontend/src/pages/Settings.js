@@ -157,35 +157,23 @@ export default function Settings() {
               actionText="Send Test Email"
             />
             
-            <div 
-              onClick={() => navigate('/monthly-report')}
-              className="bg-white rounded-2xl p-5 shadow-pcos-card cursor-pointer hover:shadow-lg transition-shadow"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center flex-shrink-0">
-                  <Download className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-lg text-pcos-text">Monthly Reports</h3>
-                  <p className="text-sm text-pcos-text-muted font-body">View and download your wellness reports</p>
-                </div>
-              </div>
-            </div>
+            <SettingCard
+              icon={Download}
+              title="Monthly Reports"
+              description="View and download your wellness reports"
+              action={() => navigate('/monthly-report')}
+              actionText="View Reports"
+            />
             
-            <div 
-              onClick={() => navigate('/admin-panel')}
-              className="bg-white rounded-2xl p-5 shadow-pcos-card cursor-pointer hover:shadow-lg transition-shadow"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center flex-shrink-0">
-                  <Heart className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-lg text-pcos-text">Boyfriend Panel</h3>
-                  <p className="text-sm text-pcos-text-muted font-body">Manage daily love messages</p>
-                </div>
-              </div>
-            </div>
+            {userType === 'admin' && (
+              <SettingCard
+                icon={Heart}
+                title="Boyfriend Panel"
+                description="Manage daily love messages for Grishu"
+                action={() => navigate('/admin-panel')}
+                actionText="Open Panel"
+              />
+            )}
           </div>
           
           {/* About */}
