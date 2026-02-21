@@ -248,10 +248,16 @@ async def get_period_prediction():
             start1 = datetime.fromisoformat(logs[i]["start_date"])
             start2 = datetime.fromisoformat(logs[i + 1]["start_date"])
             diff = (start1 - start2).days
-            if diff > 0:
+            # Only use realistic cycle lengths (21-45 days for PCOS)
+            # Ignore unrealistic gaps (like old test data)
+            if 21 <= diff <= 45:
                 cycle_lengths.append(diff)
         
-        avg_cycle = int(sum(cycle_lengths) / len(cycle_lengths)) if cycle_lengths else logs[0].get("cycle_length", 28)
+        # If we have valid cycle lengths, use average; otherwise use manual setting
+        if cycle_lengths:
+            avg_cycle = int(sum(cycle_lengths) / len(cycle_lengths))
+        else:
+            avg_cycle = logs[0].get("cycle_length", 28)
     else:
         avg_cycle = logs[0].get("cycle_length", 28)
     
