@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Bell, Download, LogOut, Heart, Mail, Smartphone, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { BottomNav } from '../components/BottomNav';
-import { removeFromLocal, subscribeToPushNotifications, setupInstallPrompt, showInstallPrompt } from '../utils/offline';
+import { removeFromLocal, getFromLocal, subscribeToPushNotifications, setupInstallPrompt, showInstallPrompt } from '../utils/offline';
 import { sendDailyReminder } from '../utils/api';
 import { toast } from 'sonner';
 
