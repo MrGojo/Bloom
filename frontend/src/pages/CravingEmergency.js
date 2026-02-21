@@ -143,95 +143,95 @@ export default function CravingEmergency() {
               )}
             </div>
           ) : (
-              <motion.div
-                key={craving.craving_id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                className="bg-white rounded-pcos-xl p-6 shadow-pcos-card space-y-4"
-              >
-                {/* Instead of / Swap to */}
-                <div className="space-y-3">
-                  <div className="p-4 bg-red-50 rounded-2xl">
-                    <div className="text-xs font-body font-medium text-red-600 mb-1">Instead of:</div>
-                    <div className="text-lg font-heading font-bold text-red-700 flex items-center gap-2">
-                      <span className="text-2xl">❌</span>
-                      {craving.junk_food}
-                    </div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-3xl">⬇️</div>
-                  </div>
-                  
-                  <div className="p-4 bg-green-50 rounded-2xl">
-                    <div className="text-xs font-body font-medium text-green-600 mb-1">Try this:</div>
-                    <div className="text-lg font-heading font-bold text-green-700 flex items-center gap-2">
-                      <span className="text-2xl">✅</span>
-                      {craving.healthy_alternative}
-                    </div>
+            {/* Alternative Card */}
+            <motion.div
+              key={selectedCraving.craving_id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="bg-white rounded-pcos-xl p-6 shadow-pcos-card space-y-4"
+            >
+              {/* Instead of / Swap to */}
+              <div className="space-y-3">
+                <div className="p-4 bg-red-50 rounded-2xl">
+                  <div className="text-xs font-body font-medium text-red-600 mb-1">Instead of:</div>
+                  <div className="text-lg font-heading font-bold text-red-700 flex items-center gap-2">
+                    <span className="text-2xl">❌</span>
+                    {selectedCraving.junk_food}
                   </div>
                 </div>
                 
-                {/* Details */}
-                <div className="pt-4 border-t border-pcos-border space-y-3">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-pcos-primary" />
-                    <span className="text-sm font-body text-pcos-text">
-                      Prep time: <span className="font-medium">{craving.prep_time}</span>
-                    </span>
+                <div className="text-center">
+                  <div className="text-3xl">⬇️</div>
+                </div>
+                
+                <div className="p-4 bg-green-50 rounded-2xl">
+                  <div className="text-xs font-body font-medium text-green-600 mb-1">Try this:</div>
+                  <div className="text-lg font-heading font-bold text-green-700 flex items-center gap-2">
+                    <span className="text-2xl">✅</span>
+                    {selectedCraving.healthy_alternative}
                   </div>
-                  
-                  {craving.ready_made && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-pcos-success/20 rounded-full">
-                      <ChefHat className="w-4 h-4 text-green-700" />
-                      <span className="text-xs font-body font-medium text-green-700">Ready-made option available!</span>
+                </div>
+              </div>
+              
+              {/* Details */}
+              <div className="pt-4 border-t border-pcos-border space-y-3">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-pcos-primary" />
+                  <span className="text-sm font-body text-pcos-text">
+                    Prep time: <span className="font-medium">{selectedCraving.prep_time}</span>
+                  </span>
+                </div>
+                
+                {selectedCraving.ready_made && (
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-pcos-success/20 rounded-full">
+                    <ChefHat className="w-4 h-4 text-green-700" />
+                    <span className="text-xs font-body font-medium text-green-700">Ready-made option available!</span>
+                  </div>
+                )}
+                
+                {/* Ingredients */}
+                {selectedCraving.ingredients && selectedCraving.ingredients.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-body font-medium text-pcos-text mb-2">Ingredients:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedCraving.ingredients.map((ingredient, i) => (
+                        <span key={i} className="px-3 py-1 bg-pcos-secondary/30 rounded-full text-xs font-body text-pcos-text">
+                          {ingredient}
+                        </span>
+                      ))}
                     </div>
-                  )}
-                  
-                  {/* Ingredients */}
-                  {craving.ingredients && craving.ingredients.length > 0 && (
-                    <div>
-                      <h4 className="text-sm font-body font-medium text-pcos-text mb-2">Ingredients:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {craving.ingredients.map((ingredient, i) => (
-                          <span key={i} className="px-3 py-1 bg-pcos-secondary/30 rounded-full text-xs font-body text-pcos-text">
-                            {ingredient}
+                  </div>
+                )}
+                
+                {/* Recipe Steps */}
+                {selectedCraving.recipe_steps && selectedCraving.recipe_steps.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-body font-medium text-pcos-text mb-2">Quick Steps:</h4>
+                    <ol className="space-y-2">
+                      {selectedCraving.recipe_steps.map((step, i) => (
+                        <li key={i} className="flex gap-3 text-sm font-body text-pcos-text-muted">
+                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pcos-primary text-white flex items-center justify-center text-xs font-bold">
+                            {i + 1}
                           </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Recipe Steps */}
-                  {craving.recipe_steps && craving.recipe_steps.length > 0 && (
-                    <div>
-                      <h4 className="text-sm font-body font-medium text-pcos-text mb-2">Quick Steps:</h4>
-                      <ol className="space-y-2">
-                        {craving.recipe_steps.map((step, i) => (
-                          <li key={i} className="flex gap-3 text-sm font-body text-pcos-text-muted">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pcos-primary text-white flex items-center justify-center text-xs font-bold">
-                              {i + 1}
-                            </span>
-                            <span className="flex-1">{step}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  )}
-                </div>
-                
-                {/* Try Another Button */}
-                <button
-                  data-testid="try-another-button"
-                  onClick={handleGetAlternative}
-                  className="w-full py-3 rounded-full border-2 border-pcos-primary text-pcos-primary font-body font-medium hover:bg-pcos-primary hover:text-white transition-all"
-                >
-                  Try Another Alternative
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                          <span className="flex-1">{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+              </div>
+              
+              {/* Back to Selection Button */}
+              <button
+                data-testid="back-to-selection-button"
+                onClick={() => setSelectedCraving(null)}
+                className="w-full py-3 rounded-full border-2 border-pcos-primary text-pcos-primary font-body font-medium hover:bg-pcos-primary hover:text-white transition-all"
+              >
+                Choose Another Craving
+              </button>
+            </motion.div>
+          )}
           
           {/* Support Message */}
           <motion.div
