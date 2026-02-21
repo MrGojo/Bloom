@@ -11,12 +11,20 @@ export default function Settings() {
   const navigate = useNavigate();
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [canInstall, setCanInstall] = useState(false);
+  const [userType, setUserType] = useState('user');
+  const [userName, setUserName] = useState('');
   
   useEffect(() => {
     // Check notification permission
     if ('Notification' in window) {
       setNotificationsEnabled(Notification.permission === 'granted');
     }
+    
+    // Get user info
+    const type = getFromLocal('userType') || 'user';
+    const name = getFromLocal('userName') || 'Grishu';
+    setUserType(type);
+    setUserName(name);
     
     // Setup install prompt
     setupInstallPrompt((canShow) => {
