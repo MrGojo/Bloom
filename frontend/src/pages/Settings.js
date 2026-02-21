@@ -121,8 +121,10 @@ export default function Settings() {
             <div className="w-20 h-20 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-3">
               <Heart className="w-10 h-10 text-white fill-white" />
             </div>
-            <h2 className="text-2xl font-heading font-bold mb-1">Grishu</h2>
-            <p className="text-white/80 font-body text-sm">Your wellness journey 💕</p>
+            <h2 className="text-2xl font-heading font-bold mb-1">{userName}</h2>
+            <p className="text-white/80 font-body text-sm">
+              {userType === 'admin' ? 'Admin Account' : 'Your wellness journey 💕'}
+            </p>
           </div>
           
           {/* App Features */}
