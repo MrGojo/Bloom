@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Heart, Lock, Eye, EyeOff } from 'lucide-react';
 import { login } from '../utils/api';
-import { saveToLocal } from '../utils/offline';
+import { saveToLocal, getFromLocal } from '../utils/offline';
 import { toast } from 'sonner';
 
 export default function Login() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [showHearts, setShowHearts] = useState(false); // 💕 NEW
+  const [showHearts, setShowHearts] = useState(false);
   const navigate = useNavigate();
+
+  // ✅ AUTO LOGIN ON REOPEN
+  useEffect(() => {
+    const isLoggedIn = getFromLocal('isLoggedIn');
+    if (isLoggedIn) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,6 +27,7 @@ export default function Login() {
 
     try {
       const response = await login(password);
+
       if (response.success) {
         saveToLocal('isLoggedIn', true);
         saveToLocal('userId', response.user_id);
@@ -30,7 +39,7 @@ export default function Login() {
         // 💕 Trigger heart burst
         setShowHearts(true);
 
-        // Delay navigation to allow animation
+        // Delay dashboard navigation slightly
         setTimeout(() => {
           navigate('/dashboard');
         }, 1200);
@@ -152,18 +161,13 @@ export default function Login() {
         </motion.div>
       </motion.div>
 
-      {/* 💕 HEART BURST ANIMATION */}
+      {/* 💕 HEART BURST */}
       {showHearts && (
         <div className="fixed inset-0 pointer-events-none flex items-center justify-center z-50">
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              initial={{
-                opacity: 1,
-                scale: 0,
-                y: 0,
-                x: 0
-              }}
+              initial={{ opacity: 1, scale: 0, y: 0, x: 0 }}
               animate={{
                 opacity: 0,
                 scale: 1.2,
