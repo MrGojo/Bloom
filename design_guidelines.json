@@ -1,0 +1,174 @@
+{
+  "identity": {
+    "name": "E1",
+    "persona": "The Anti-AI Designer",
+    "principles": [
+      "Fusion over Imitation: Mix wellness softness with data precision",
+      "Emotion First: Every screen must feel like a warm hug",
+      "Content is King: The boyfriend's messages and health tips are the heroes",
+      "Zoom In: Big, bold focus on daily stats and affirmations",
+      "Negative Space: Breathable layouts to reduce anxiety",
+      "Contrast: Soft pastels vs. crisp dark purple text for readability"
+    ]
+  },
+  "theme": "light",
+  "typography": {
+    "headings": {
+      "family": "Nunito, sans-serif",
+      "weights": ["600", "700", "800"],
+      "usage": "Use for all page titles, section headers, and big stats. Roundness = Cuteness.",
+      "letter_spacing": "tracking-normal"
+    },
+    "body": {
+      "family": "DM Sans, sans-serif",
+      "weights": ["400", "500", "700"],
+      "usage": "Use for all paragraphs, labels, and list items. Clean and legible.",
+      "letter_spacing": "tracking-wide"
+    },
+    "size_scale": {
+      "h1": "text-3xl md:text-4xl",
+      "h2": "text-2xl md:text-3xl",
+      "h3": "text-xl md:text-2xl",
+      "body": "text-base",
+      "small": "text-sm",
+      "tiny": "text-xs"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "#FDE2F3",
+      "primary": "#D8B4F8",
+      "primary_foreground": "#4A3B5E",
+      "secondary": "#E5D4FF",
+      "secondary_foreground": "#5D4578",
+      "accent": "#FFFFFF",
+      "accent_foreground": "#7A5C9E",
+      "text": "#5D4578",
+      "text_muted": "#9CA3AF",
+      "success": "#A7F3D0",
+      "error": "#FDA4AF",
+      "card": "#FFFFFF",
+      "border": "#F3E8FF"
+    },
+    "gradients": {
+      "hero": "linear-gradient(135deg, #FDE2F3 0%, #E5D4FF 100%)",
+      "button": "linear-gradient(to right, #D8B4F8, #C4B5FD)"
+    },
+    "shadows": {
+      "card": "0 10px 30px -10px rgba(216, 180, 248, 0.3)",
+      "button": "0 4px 14px 0 rgba(216, 180, 248, 0.39)"
+    }
+  },
+  "layout": {
+    "type": "mobile_first",
+    "structure": "Single column layout with bottom navigation bar for primary destinations.",
+    "grid": {
+      "dashboard": "grid-cols-1 gap-6",
+      "features": "grid-cols-2 gap-4"
+    },
+    "spacing": {
+      "container": "p-6",
+      "section": "py-8",
+      "element": "mb-4"
+    },
+    "container": "max-w-md mx-auto min-h-screen bg-[#FDE2F3]"
+  },
+  "components": {
+    "buttons": {
+      "style": "rounded-full px-8 py-6 font-bold shadow-sm transition-all hover:scale-105 active:scale-95",
+      "primary": "bg-gradient-to-r from-[#D8B4F8] to-[#C4B5FD] text-[#5D4578]",
+      "secondary": "bg-white text-[#7A5C9E] border border-[#E5D4FF]"
+    },
+    "cards": {
+      "style": "rounded-[2rem] bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-none transition-transform hover:-translate-y-1",
+      "variants": ["feature-card", "stat-card", "message-card"]
+    },
+    "inputs": {
+      "style": "rounded-2xl border-[#E5D4FF] bg-[#FAFAFA] px-4 py-3 focus:ring-2 focus:ring-[#D8B4F8] focus:border-transparent text-[#5D4578] placeholder:text-[#D1D5DB]"
+    },
+    "navigation": {
+      "type": "bottom-bar",
+      "style": "fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-[#F3E8FF] pb-safe pt-2 px-6 flex justify-between items-center z-50 rounded-t-[2rem]"
+    }
+  },
+  "visual_enhancers": {
+    "radius": "rounded-3xl",
+    "glassmorphism": "backdrop-blur-md bg-white/60",
+    "textures": "Subtle noise overlay (opacity 0.02) to add warmth",
+    "icons": "Lucide React (Rounded stroke)",
+    "micro_interactions": "Heart pop on like, confetti on streak, gentle pulse on emergency button"
+  },
+  "motion": {
+    "page_transition": {
+      "initial": { "opacity": 0, "y": 20 },
+      "animate": { "opacity": 1, "y": 0 },
+      "exit": { "opacity": 0, "y": -20 },
+      "transition": { "duration": 0.3, "ease": "easeOut" }
+    },
+    "hover": { "scale": 1.02 },
+    "tap": { "scale": 0.98 }
+  },
+  "image_urls": {
+    "wellness_covers": [
+      {
+        "url": "https://images.unsplash.com/photo-1733157278423-df544e41893d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcGFzdGVsJTIwd2VsbG5lc3MlMjBpbGx1c3RyYXRpb25zfGVufDB8fHx8MTc3MTY5NDk0Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Cute toys on table - Calm/Playful vibe",
+        "category": "hero"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1657584942205-c34fec47404d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxjdXRlJTIwcGFzdGVsJTIwd2VsbG5lc3MlMjBpbGx1c3RyYXRpb25zfGVufDB8fHx8MTc3MTY5NDk0Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Yoga pose sketch - Wellness",
+        "category": "wellness"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1541694049324-64f8dd05be19?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwyfHxjdXRlJTIwcGFzdGVsJTIwd2VsbG5lc3MlMjBpbGx1c3RyYXRpb25zfGVufDB8fHx8MTc3MTY5NDk0Mnww&ixlib=rb-4.1.0&q=85",
+        "description": "Pastel flowers - Background decoration",
+        "category": "decoration"
+      }
+    ],
+    "food_suggestions": [
+      {
+        "url": "https://images.pexels.com/photos/33709317/pexels-photo-33709317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Indian lentils/dal - Healthy Suggestion",
+        "category": "food"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1617622141573-2e00d8818f3f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwzfHxoZWFsdGh5JTIwaW5kaWFuJTIwZm9vZCUyMGJvd2wlMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzcxNjk0OTQzfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Green vegetable bowl - Healthy Eating",
+        "category": "food"
+      },
+       {
+        "url": "https://images.pexels.com/photos/30552849/pexels-photo-30552849.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Fruit and granola bowl - Breakfast",
+        "category": "food"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "INSTALL_DEPENDENCIES: npm install framer-motion lucide-react react-day-picker date-fns clsx tailwind-merge",
+    "SETUP_TAILWIND: Update tailwind.config.js to include the custom color palette and border radius (rounded-3xl).",
+    "CREATE_COMPONENTS: Build a 'BottomNav', 'StatsCard', 'MoodSelector', 'WaterTracker', and 'BoyfriendMessage' component.",
+    "PWA_SETUP: Ensure manifest.json has the correct theme_color (#FDE2F3) and background_color.",
+    "ROUTING: Use React Router for navigation (Dashboard, Calendar, Food, Profile, Admin).",
+    "PRIVACY: Hardcode the login check. Store data in localStorage (or MongoDB as requested, but ensure offline first sync if possible).",
+    "AESTHETIC: Do NOT use sharp corners. Everything must be rounded. Use the pastel colors everywhere."
+  ],
+  "universal_guidelines": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠 etc.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use sonner for toasts"
+  ]
+}

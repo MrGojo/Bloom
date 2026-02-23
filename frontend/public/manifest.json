@@ -1,0 +1,22 @@
+{
+  "short_name": "Bloom",
+  "name": "Bloom - PCOS Wellness Tracker",
+  "description": "A private wellness companion for managing PCOS with love 💜",
+  "icons": [
+    {
+      "src": "https://static.prod-images.emergentagent.com/jobs/8d62aaf7-4628-486c-8e37-547cd56df714/images/c590eb9f1efecc0f94048b777d159cc0ab274406b4aaacf1ce9ca6440ce2e5e4.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "https://static.prod-images.emergentagent.com/jobs/8d62aaf7-4628-486c-8e37-547cd56df714/images/c590eb9f1efecc0f94048b777d159cc0ab274406b4aaacf1ce9ca6440ce2e5e4.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FDE2F3",
+  "background_color": "#FDE2F3",
+  "orientation": "portrait"
+}
